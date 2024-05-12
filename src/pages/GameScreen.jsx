@@ -1,8 +1,8 @@
 const gameGrid = [
-  [null, null, null, null],
-  [null, null, null, null],
-  [null, null, null, null],
-  [null, null, null, null],
+  [1, 0, 1, 0],
+  [0, 0, 0, 0],
+  [1, 0, 1, 0],
+  [0, 1, 0, 1],
 ];
 
 export default function GameScreen() {
@@ -12,15 +12,25 @@ export default function GameScreen() {
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>
             <ol className="flex flex-wrap justify-center">
-              {row.map((col, colIndex) => (
-                <li
-                  key={colIndex}
-                  className="bg-grass-texture flex h-24 w-24 items-center justify-center bg-contain"
-                >
-                  Row:{rowIndex}
-                  <br /> Col:{colIndex}
-                </li>
-              ))}
+              {row.map((col, colIndex) =>
+                col ? (
+                  <li
+                    key={colIndex}
+                    className="bg-grass-texture flex h-24 w-24 items-center justify-center bg-contain"
+                  >
+                    Row:{rowIndex}
+                    <br /> Col:{colIndex}
+                  </li>
+                ) : (
+                  <li
+                    key={colIndex}
+                    className="bg-mud-texture flex h-24 w-24 items-center justify-center bg-contain"
+                  >
+                    Row:{rowIndex}
+                    <br /> Col:{colIndex}
+                  </li>
+                ),
+              )}
             </ol>
           </li>
         ))}
