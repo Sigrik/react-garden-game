@@ -1,3 +1,5 @@
+import { Player } from "../components/Player";
+
 const gameGrid = [
   [1, 0, 1, 0],
   [0, 0, 0, 0],
@@ -9,6 +11,7 @@ export default function GameScreen() {
   return (
     <div className="flex flex-col flex-wrap items-center justify-center">
       <ol className="flex flex-col flex-wrap justify-center">
+        <Player />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>
             <ol className="flex flex-wrap justify-center">
