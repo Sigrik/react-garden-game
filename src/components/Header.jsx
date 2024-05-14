@@ -12,7 +12,7 @@ export default function Header() {
     setShowSettings(!showSettings);
   }
 
-  function handleNavigate() {
+  function navigateBack() {
     navigate(-1);
   }
 
@@ -25,7 +25,7 @@ export default function Header() {
         <Cog6ToothIcon />
       </button>
       <button
-        onClick={handleNavigate}
+        onClick={navigateBack}
         className="absolute left-4 top-4 h-16 w-16 text-white"
       >
         <ArrowLeftIcon />
