@@ -32,6 +32,12 @@ export default function GameScreen() {
     });
   }
 
+  let playerStyle = {
+    transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
+  };
+
+  // move 96 px - 6 rem
+
   const detectKeyDown = (e) => {
     switch (e.key) {
       case "w":
@@ -66,8 +72,8 @@ export default function GameScreen() {
 
   return (
     <div className="flex flex-col flex-wrap items-center justify-center">
-      <ol className="flex flex-col flex-wrap justify-center">
-        <Player />
+      <ol className="relative flex flex-col flex-wrap justify-center">
+        <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>
             <ol className="flex flex-wrap justify-center">
@@ -76,18 +82,12 @@ export default function GameScreen() {
                   <li
                     key={colIndex}
                     className="bg-grass-texture flex h-24 w-24 items-center justify-center bg-contain"
-                  >
-                    Row:{rowIndex}
-                    <br /> Col:{colIndex}
-                  </li>
+                  ></li>
                 ) : (
                   <li
                     key={colIndex}
                     className="bg-mud-texture flex h-24 w-24 items-center justify-center bg-contain"
-                  >
-                    Row:{rowIndex}
-                    <br /> Col:{colIndex}
-                  </li>
+                  ></li>
                 ),
               )}
             </ol>
