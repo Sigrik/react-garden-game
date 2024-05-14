@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./pages/Root";
-import MainMenu from "./pages/MainMenu";
-import GameScreen from "./pages/GameScreen";
-import LevelSelect from "./pages/LevelSelect";
-import ErrorPage from "./pages/ErrorPage";
+import { RootLayout } from "./pages/Root";
+import { MainMenu } from "./pages/MainMenu";
+import { GameScreen } from "./pages/GameScreen";
+import { LevelSelect } from "./pages/LevelSelect";
+import { ErrorPage } from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {

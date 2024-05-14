@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function MainMenu() {
+export function MainMenu() {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <h1 className="text-4xl text-white">REACT GARDEN TILES</h1>

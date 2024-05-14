@@ -1,3 +1,3 @@
-export default function LevelSelect() {
+export function LevelSelect() {
   return <h1>Level select</h1>;
 }

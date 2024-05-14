@@ -1,10 +1,10 @@
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import Settings from "./Settings";
+import { Settings } from "./Settings";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export function Header() {
   const navigate = useNavigate();
   const [showSettings, setShowSettings] = useState(false);
 
@@ -13,7 +13,7 @@ export default function Header() {
   }
 
   function navigateBack() {
-    navigate(-1);
+    navigate("/");
   }
 
   return (

@@ -8,8 +8,11 @@ const gameGrid = [
   [0, 1, 0, 1],
 ];
 
-export default function GameScreen() {
+export function GameScreen() {
   const [playerPos, setPlayerPos] = useState({ row: 3, col: 0 });
+  const playerStyle = {
+    transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
+  };
 
   function movePlayer(rowChange, colChange) {
     setPlayerPos((prevPosition) => {
@@ -32,12 +35,6 @@ export default function GameScreen() {
     });
   }
 
-  let playerStyle = {
-    transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
-  };
-
-  // move 96 px - 6 rem
-
   const detectKeyDown = (e) => {
     switch (e.key) {
       case "w":
@@ -59,7 +56,7 @@ export default function GameScreen() {
   };
 
   useEffect(() => {
-    console.log(playerPos); // Logs playerPos whenever it changes
+    console.log(playerPos);
   }, [playerPos]);
 
   useEffect(() => {
