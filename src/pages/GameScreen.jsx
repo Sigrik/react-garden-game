@@ -1,5 +1,6 @@
-import { Player } from "../components/Player";
 import { useState, useEffect } from "react";
+import { Player } from "../components/Player";
+import { GameOver } from "../components/GameOver";
 
 const gameGrid = [
   [1, 0, 1, 0],
@@ -32,10 +33,10 @@ export function GameScreen() {
     }, 0);
     if (gridCount === 16 || gridCount === 0) {
       console.log("You won!");
+      return true;
     }
+    return false;
   }
-
-  checkWin(gameGrid);
 
   function movePlayer(rowChange, colChange) {
     setPlayerPos((prevPosition) => {
@@ -102,6 +103,7 @@ export function GameScreen() {
 
   return (
     <div className="flex flex-col flex-wrap items-center justify-center">
+      {checkWin(gameGrid) ? <GameOver></GameOver> : null}
       <ol className="relative flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
