@@ -3,14 +3,15 @@ import { Player } from "../components/Player";
 import { GameOver } from "../components/GameOver";
 
 const gameGrid = [
-  [1, 0, 1, 0],
-  [0, 0, 0, 0],
-  [1, 0, 1, 0],
-  [0, 1, 0, 1],
+  [1, 0, 0, 0],
+  [1, 0, 1, 1],
+  [1, 0, 1, 1],
+  [1, 0, 1, 1],
 ];
 
 export function GameScreen() {
   const [playerPos, setPlayerPos] = useState({ row: 3, col: 0 });
+  const [gameTime, setGameTime] = useState(10);
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
   };
@@ -94,6 +95,20 @@ export function GameScreen() {
 */
 
   useEffect(() => {
+    const gameTimer = setInterval(() => {
+      setGameTime((prevTime) => {
+        if (prevTime === 1) {
+          clearInterval(gameTimer);
+          console.log("Game Over time's up!");
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(gameTimer);
+  }, []);
+
+  useEffect(() => {
     document.addEventListener("keydown", throttledKeyDown, true);
 
     return () => {
@@ -104,6 +119,7 @@ export function GameScreen() {
   return (
     <div className="flex flex-col flex-wrap items-center justify-center">
       {checkWin(gameGrid) ? <GameOver></GameOver> : null}
+      <p>{gameTime}</p>
       <ol className="relative flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
