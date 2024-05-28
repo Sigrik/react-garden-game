@@ -9,9 +9,12 @@ const gameGrid = [
   [1, 0, 1, 1],
 ];
 
+const levelGameTime = 20;
+
 export function GameScreen() {
   const [playerPos, setPlayerPos] = useState({ row: 3, col: 0 });
-  const [gameTime, setGameTime] = useState(10);
+  const [gameTime, setGameTime] = useState(levelGameTime);
+  const [checkGameOver, setCheckGameOver] = useState(false);
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
   };
@@ -99,6 +102,7 @@ export function GameScreen() {
       setGameTime((prevTime) => {
         if (prevTime === 1) {
           clearInterval(gameTimer);
+          setCheckGameOver(true);
           console.log("Game Over time's up!");
         }
         return prevTime - 1;
@@ -117,9 +121,13 @@ export function GameScreen() {
   }, []);
 
   return (
-    <div className="flex flex-col flex-wrap items-center justify-center">
-      {checkWin(gameGrid) ? <GameOver></GameOver> : null}
-      <p>{gameTime}</p>
+    <div className="relative flex flex-col flex-wrap items-center justify-center">
+      {checkWin(gameGrid) ? <GameOver title="You Won!"></GameOver> : null}
+      {checkGameOver ? <GameOver title="You Lost"></GameOver> : null}
+      <div className="absolute -top-20 flex flex-col items-center justify-center">
+        <div>{gameTime}</div>
+        <progress value={gameTime} max={levelGameTime} />
+      </div>
       <ol className="relative flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
