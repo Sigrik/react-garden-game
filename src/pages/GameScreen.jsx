@@ -132,12 +132,14 @@ export function GameScreen() {
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>
-            <ol className="flex flex-wrap justify-center transition-all">
+            <ol className="flex flex-wrap justify-center bg-amber-100 transition-all">
               {row.map((col, colIndex) => (
                 <li
                   key={colIndex}
-                  className={`flex h-24 w-24 items-center justify-center bg-contain transition-all duration-300 ease-in-out ${
-                    col ? "bg-grass-texture" : "bg-mud-texture"
+                  className={`flex h-24 w-24 items-center justify-center bg-contain ${
+                    col
+                      ? " animate-tileTransitionGrass"
+                      : " animate-tileTransitionMud"
                   }`}
                 ></li>
               ))}

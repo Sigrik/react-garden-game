@@ -8,6 +8,52 @@ export default {
         "mud-texture": "url('/src/assets/mud-texture.png')",
         "player-model": "url('/src/assets/player.png')",
       },
+      keyframes: {
+        tileTransitionGrass: {
+          "0%": {
+            backgroundImage: "url('/src/assets/mud-texture.png')",
+            transform: "scale(1)",
+          },
+          "20%": {
+            transform: "scale(1)",
+          },
+          "30%": {
+            transform: "scale(1.1)",
+          },
+          "70%": {
+            backgroundImage: "url('/src/assets/grass-texture.png')",
+            transform: "scale(0.95)",
+          },
+          "100%": {
+            backgroundImage: "url('/src/assets/grass-texture.png')",
+            transform: "scale(1)",
+          },
+        },
+        tileTransitionMud: {
+          "0%": {
+            backgroundImage: "url('/src/assets/grass-texture.png')",
+            transform: "scale(1)",
+          },
+          "20%": {
+            transform: "scale(1)",
+          },
+          "30%": {
+            transform: "scale(1.1)",
+          },
+          "70%": {
+            backgroundImage: "url('/src/assets/mud-texture.png')",
+            transform: "scale(0.95)",
+          },
+          "100%": {
+            backgroundImage: "url('/src/assets/mud-texture.png')",
+            transform: "scale(1)",
+          },
+        },
+      },
+      animation: {
+        tileTransitionGrass: "tileTransitionGrass 0.3s ease-in-out forwards",
+        tileTransitionMud: "tileTransitionMud 0.3s ease-in-out forwards",
+      },
     },
   },
   plugins: [],
