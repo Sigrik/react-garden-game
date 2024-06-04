@@ -18,6 +18,27 @@ export function GameScreen() {
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
   };
+  const detectKeyDown = (e) => {
+    switch (e.key) {
+      case "w":
+      case "ArrowUp":
+        movePlayer(-1, 0);
+        break;
+      case "s":
+      case "ArrowDown":
+        movePlayer(+1, 0);
+        break;
+      case "a":
+      case "ArrowLeft":
+        movePlayer(0, -1);
+        break;
+      case "d":
+      case "ArrowRight":
+        movePlayer(0, +1);
+    }
+  };
+
+  const throttledKeyDown = throttle(detectKeyDown, 700);
 
   function throttle(mainFunction, delay) {
     let timerFlag = null;
@@ -70,27 +91,6 @@ export function GameScreen() {
     gameGrid[row][col] = gameGrid[row][col] === 1 ? 0 : 1;
   }
 
-  const detectKeyDown = (e) => {
-    switch (e.key) {
-      case "w":
-      case "ArrowUp":
-        movePlayer(-1, 0);
-        break;
-      case "s":
-      case "ArrowDown":
-        movePlayer(+1, 0);
-        break;
-      case "a":
-      case "ArrowLeft":
-        movePlayer(0, -1);
-        break;
-      case "d":
-      case "ArrowRight":
-        movePlayer(0, +1);
-    }
-  };
-
-  const throttledKeyDown = throttle(detectKeyDown, 300);
   /*
   useEffect(() => {
     console.log(playerPos);
@@ -126,7 +126,11 @@ export function GameScreen() {
       {checkGameOver ? <GameOver title="You Lost"></GameOver> : null}
       <div className="absolute -top-20 flex flex-col items-center justify-center">
         <div>{gameTime}</div>
-        <progress value={gameTime} max={levelGameTime} />
+        <progress
+          className="transition-all"
+          value={gameTime}
+          max={levelGameTime}
+        />
       </div>
       <ol className="relative flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />

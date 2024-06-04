@@ -14,13 +14,13 @@ export default {
             backgroundImage: "url('/src/assets/mud-texture.png')",
             transform: "scale(1)",
           },
-          "20%": {
+          "30%": {
             transform: "scale(1)",
           },
-          "30%": {
+          "40%": {
             transform: "scale(1.1)",
           },
-          "70%": {
+          "80%": {
             backgroundImage: "url('/src/assets/grass-texture.png')",
             transform: "scale(0.95)",
           },
@@ -34,13 +34,13 @@ export default {
             backgroundImage: "url('/src/assets/grass-texture.png')",
             transform: "scale(1)",
           },
-          "20%": {
+          "30%": {
             transform: "scale(1)",
           },
-          "30%": {
+          "40%": {
             transform: "scale(1.1)",
           },
-          "70%": {
+          "80%": {
             backgroundImage: "url('/src/assets/mud-texture.png')",
             transform: "scale(0.95)",
           },
@@ -51,8 +51,8 @@ export default {
         },
       },
       animation: {
-        tileTransitionGrass: "tileTransitionGrass 0.3s ease-in-out forwards",
-        tileTransitionMud: "tileTransitionMud 0.3s ease-in-out forwards",
+        tileTransitionGrass: "tileTransitionGrass 0.4s ease-in-out forwards",
+        tileTransitionMud: "tileTransitionMud 0.4s ease-in-out forwards",
       },
     },
   },
