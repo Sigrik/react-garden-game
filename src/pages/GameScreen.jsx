@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Player } from "../components/Player";
 import { GameOver } from "../components/GameOver";
 
@@ -15,6 +15,7 @@ export function GameScreen() {
   const [playerPos, setPlayerPos] = useState({ row: 3, col: 0 });
   const [gameTime, setGameTime] = useState(levelGameTime);
   const [checkGameOver, setCheckGameOver] = useState(false);
+  const gameTimerRef = useRef(null);
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
   };
@@ -58,6 +59,7 @@ export function GameScreen() {
     }, 0);
     if (gridCount === 16 || gridCount === 0) {
       console.log("You won!");
+      clearInterval(gameTimerRef.current);
       return true;
     }
     return false;
@@ -98,10 +100,10 @@ export function GameScreen() {
 */
 
   useEffect(() => {
-    const gameTimer = setInterval(() => {
+    gameTimerRef.current = setInterval(() => {
       setGameTime((prevTime) => {
         if (prevTime === 1) {
-          clearInterval(gameTimer);
+          clearInterval(gameTimerRef.current);
           setCheckGameOver(true);
           console.log("Game Over time's up!");
         }
@@ -109,7 +111,7 @@ export function GameScreen() {
       });
     }, 1000);
 
-    return () => clearInterval(gameTimer);
+    return () => clearInterval(gameTimerRef.current);
   }, []);
 
   useEffect(() => {
