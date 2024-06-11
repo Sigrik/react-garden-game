@@ -12,31 +12,37 @@ const gameGrid = [
 const levelGameTime = 20;
 
 export function GameScreen() {
-  const [playerPos, setPlayerPos] = useState({ row: 3, col: 0 });
+  const [playerPos, setPlayerPos] = useState({
+    row: 3,
+    col: 0,
+    direction: "Down",
+  });
   const [gameTime, setGameTime] = useState(levelGameTime);
   const [checkGameOver, setCheckGameOver] = useState(false);
   const gameTimerRef = useRef(null);
   const throttledKeyDownRef = useRef(null);
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
+    background: `url('/src/assets/player${playerPos.direction}.png') no-repeat center / contain`,
   };
+
   const detectKeyDown = (e) => {
     switch (e.key) {
       case "w":
       case "ArrowUp":
-        movePlayer(-1, 0);
+        movePlayer(-1, 0, "Up");
         break;
       case "s":
       case "ArrowDown":
-        movePlayer(+1, 0);
+        movePlayer(+1, 0, "Down");
         break;
       case "a":
       case "ArrowLeft":
-        movePlayer(0, -1);
+        movePlayer(0, -1, "Left");
         break;
       case "d":
       case "ArrowRight":
-        movePlayer(0, +1);
+        movePlayer(0, +1, "Right");
     }
   };
 
@@ -71,10 +77,11 @@ export function GameScreen() {
     return false;
   }
 
-  function movePlayer(rowChange, colChange) {
+  function movePlayer(rowChange, colChange, direction) {
     setPlayerPos((prevPosition) => {
       let newRow = prevPosition.row + rowChange;
       let newCol = prevPosition.col + colChange;
+      let facingDirection = direction;
       if (newRow <= 0) {
         newRow = 0;
       } else if (newRow >= 3) {
@@ -91,7 +98,7 @@ export function GameScreen() {
       } else {
         swapSquare(newRow, newCol);
       }
-      return { row: newRow, col: newCol };
+      return { row: newRow, col: newCol, direction: facingDirection };
     });
   }
 
@@ -154,7 +161,7 @@ export function GameScreen() {
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>
-            <ol className="flex flex-wrap justify-center bg-amber-100 transition-all">
+            <ol className="flex flex-wrap justify-center bg-amber-100">
               {row.map((col, colIndex) => (
                 <li
                   key={colIndex}

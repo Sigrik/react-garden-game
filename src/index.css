@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Tiny5";
-  src: url("../public/fonts/Tiny5-Regular.ttf");
+  src: url("/fonts/Tiny5-Regular.ttf");
 }
 
 @layer components {

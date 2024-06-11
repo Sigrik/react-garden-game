@@ -29,6 +29,9 @@ export default {
           "40%": {
             transform: "scale(1.1)",
           },
+          "79%": {
+            backgroundImage: "url('/src/assets/mud-texture.png')",
+          },
           "80%": {
             backgroundImage: "url('/src/assets/grass-texture.png')",
             transform: "scale(0.95)",
@@ -48,6 +51,9 @@ export default {
           },
           "40%": {
             transform: "scale(1.1)",
+          },
+          "79%": {
+            backgroundImage: "url('/src/assets/grass-texture.png')",
           },
           "80%": {
             backgroundImage: "url('/src/assets/mud-texture.png')",
