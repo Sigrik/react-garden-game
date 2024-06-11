@@ -16,6 +16,7 @@ export function GameScreen() {
   const [gameTime, setGameTime] = useState(levelGameTime);
   const [checkGameOver, setCheckGameOver] = useState(false);
   const gameTimerRef = useRef(null);
+  const throttledKeyDownRef = useRef(null);
   const playerStyle = {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
   };
@@ -60,6 +61,11 @@ export function GameScreen() {
     if (gridCount === 16 || gridCount === 0) {
       console.log("You won!");
       clearInterval(gameTimerRef.current);
+      document.removeEventListener(
+        "keydown",
+        throttledKeyDownRef.current,
+        true,
+      );
       return true;
     }
     return false;
@@ -105,6 +111,11 @@ export function GameScreen() {
         if (prevTime === 1) {
           clearInterval(gameTimerRef.current);
           setCheckGameOver(true);
+          document.removeEventListener(
+            "keydown",
+            throttledKeyDownRef.current,
+            true,
+          );
           console.log("Game Over time's up!");
         }
         return prevTime - 1;
@@ -115,10 +126,15 @@ export function GameScreen() {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("keydown", throttledKeyDown, true);
+    throttledKeyDownRef.current = throttle(detectKeyDown, 700);
+    document.addEventListener("keydown", throttledKeyDownRef.current, true);
 
     return () => {
-      document.removeEventListener("keydown", throttledKeyDown, true);
+      document.removeEventListener(
+        "keydown",
+        throttledKeyDownRef.current,
+        true,
+      );
     };
   }, []);
 
