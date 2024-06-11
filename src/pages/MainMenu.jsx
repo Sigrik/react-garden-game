@@ -3,25 +3,19 @@ import { Link } from "react-router-dom";
 export function MainMenu() {
   return (
     <div className="flex flex-col items-center gap-y-4">
-      <h1 className="text-4xl text-white">REACT GARDEN TILES</h1>
+      <div className="bg-game-logo h-32 w-96 bg-contain bg-center bg-no-repeat"></div>
       <div className="flex flex-col items-center gap-y-4 text-white">
         <Link
           to="/game"
-          className="w-full rounded-md border-4 border-teal-200 bg-teal-300 p-3 text-center text-3xl hover:bg-teal-200"
+          className=" drop-shadow-px-btn w-full rounded-md bg-indigo-400 p-3 text-center text-3xl hover:bg-indigo-300"
         >
-          Play
+          PLAY
         </Link>
-        <Link
-          to="/levels"
-          className="w-full rounded-md border-4 border-teal-200 bg-teal-300 p-3 text-center text-3xl hover:bg-teal-200"
-        >
-          Level Select
+        <Link className="drop-shadow-px-btn w-full rounded-md bg-red-400 p-3 text-center text-3xl hover:bg-red-300">
+          SURVIVAL MODE
         </Link>
-        <Link className="w-full rounded-md border-4 border-teal-200 bg-teal-300 p-3 text-center text-3xl hover:bg-teal-200">
-          Endless Mode
-        </Link>
-        <Link className="w-full rounded-md border-4 border-teal-200 bg-teal-300 p-3 text-center text-3xl hover:bg-teal-200">
-          How to play
+        <Link className="drop-shadow-px-btn w-full rounded-md bg-amber-400 p-3 text-center text-3xl hover:bg-amber-300">
+          HOW TO PLAY
         </Link>
       </div>
     </div>

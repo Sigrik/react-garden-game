@@ -2,11 +2,20 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      tiny5: ["Tiny5", "sans-serif"],
+    },
     extend: {
       backgroundImage: {
         "grass-texture": "url('/src/assets/grass-texture.png')",
         "mud-texture": "url('/src/assets/mud-texture.png')",
         "player-model": "url('/src/assets/player.png')",
+        "game-logo": "url('/src/assets/logo.png')",
+        "cog-icon": "url('/src/assets/cog-icon.png')",
+        "arrow-icon": "url('/src/assets/arrow-icon.png')",
+      },
+      dropShadow: {
+        "px-btn": "0px 6px 0px rgba(43,43,43, 1)",
       },
       keyframes: {
         tileTransitionGrass: {

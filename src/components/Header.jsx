@@ -1,5 +1,3 @@
-import { Cog6ToothIcon } from "@heroicons/react/24/solid";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { Settings } from "./Settings";
 import { useNavigate } from "react-router-dom";
@@ -20,16 +18,12 @@ export function Header() {
     <div>
       <button
         onClick={handleShowSettings}
-        className="absolute right-4 top-4 h-16 w-16 text-white"
-      >
-        <Cog6ToothIcon />
-      </button>
+        className="bg-cog-icon absolute right-4 top-4 h-16 w-16 bg-contain bg-center bg-no-repeat text-white"
+      ></button>
       <button
         onClick={navigateBack}
-        className="absolute left-4 top-4 h-16 w-16 text-white"
-      >
-        <ArrowLeftIcon />
-      </button>
+        className="bg-arrow-icon absolute left-4 top-4 h-16 w-16 bg-contain bg-center bg-no-repeat text-white"
+      ></button>
       {showSettings && <Settings />}
     </div>
   );

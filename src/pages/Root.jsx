@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 export function RootLayout() {
   return (
     <>
-      <main className="flex h-svh flex-col justify-center bg-amber-300">
+      <main className="flex h-svh flex-col justify-center ">
         <Header />
         <Outlet />
       </main>
