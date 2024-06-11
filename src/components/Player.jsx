@@ -1,7 +1,7 @@
 export function Player(props) {
   return (
     <div
-      className="bg-player-model absolute left-7 top-6 h-12 w-10 bg-contain bg-center bg-no-repeat transition-all"
+      className="absolute -top-8 left-2 z-10 h-24 w-20 bg-player-model bg-contain bg-center bg-no-repeat transition-all duration-500"
       style={props.style}
     ></div>
   );
