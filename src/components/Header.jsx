@@ -15,7 +15,7 @@ export function Header() {
   }
 
   return (
-    <div>
+    <div className="z-20">
       <button
         onClick={handleShowSettings}
         className="bg-cog-icon absolute right-4 top-4 h-16 w-16 bg-contain bg-center bg-no-repeat text-white"

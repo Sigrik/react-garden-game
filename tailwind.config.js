@@ -9,10 +9,12 @@ export default {
       backgroundImage: {
         "grass-texture": "url('/src/assets/grass-texture.png')",
         "mud-texture": "url('/src/assets/mud-texture.png')",
-        "player-model": "url('/src/assets/player.png')",
         "game-logo": "url('/src/assets/logo.png')",
         "cog-icon": "url('/src/assets/cog-icon.png')",
         "arrow-icon": "url('/src/assets/arrow-icon.png')",
+        "cloud-1": "url('/src/assets/cloud1.png')",
+        "cloud-2": "url('/src/assets/cloud2.png')",
+        "cloud-3": "url('/src/assets/cloud3.png')",
       },
       dropShadow: {
         "px-btn": "0px 6px 0px rgba(43,43,43, 1)",
@@ -64,10 +66,34 @@ export default {
             transform: "scale(1)",
           },
         },
+        cloudTransition: {
+          "0%": {
+            marginLeft: "-30vw",
+          },
+          "100%": {
+            marginLeft: "100vw",
+          },
+        },
+        cloudTransitionLate: {
+          "0%": {
+            marginLeft: "-80vw",
+          },
+          "100%": {
+            marginLeft: "100vw",
+          },
+        },
       },
       animation: {
         tileTransitionGrass: "tileTransitionGrass 0.4s ease-in-out forwards",
         tileTransitionMud: "tileTransitionMud 0.4s ease-in-out forwards",
+        cloudTransitionFast: "cloudTransition 40s linear infinite",
+        cloudTransitionMedium: "cloudTransition 60s linear infinite",
+        cloudTransitionSlow: "cloudTransition 80s linear infinite",
+        cloudTransitionVerySlow: "cloudTransition 100s linear infinite",
+        cloudLateTransitionFast: "cloudTransitionLate 40s linear infinite",
+        cloudLateTransitionMedium: "cloudTransitionLate 60s linear infinite",
+        cloudLateTransitionSlow: "cloudTransitionLate 80s linear infinite",
+        cloudLateTransitionVerySlow: "cloudTransitionLate 100s linear infinite",
       },
     },
   },

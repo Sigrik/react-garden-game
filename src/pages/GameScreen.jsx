@@ -157,7 +157,7 @@ export function GameScreen() {
           max={levelGameTime}
         />
       </div>
-      <ol className="relative flex flex-col flex-wrap justify-center">
+      <ol className="relative z-20 flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>

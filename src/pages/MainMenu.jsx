@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function MainMenu() {
   return (
-    <div className="flex flex-col items-center gap-y-4">
+    <div className="z-20 flex flex-col items-center gap-y-4">
       <div className="bg-game-logo h-32 w-96 bg-contain bg-center bg-no-repeat"></div>
       <div className="flex flex-col items-center gap-y-4 text-white">
         <Link
