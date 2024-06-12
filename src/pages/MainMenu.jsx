@@ -11,6 +11,12 @@ export function MainMenu() {
         >
           PLAY
         </Link>
+        <Link
+          to="/levels"
+          className="drop-shadow-px-btn w-full rounded-md bg-red-400 p-3 text-center text-3xl hover:bg-red-300"
+        >
+          LEVEL SELECT
+        </Link>
         <Link className="drop-shadow-px-btn w-full rounded-md bg-red-400 p-3 text-center text-3xl hover:bg-red-300">
           SURVIVAL MODE
         </Link>
