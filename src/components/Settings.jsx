@@ -1,8 +1,12 @@
+import { Modal } from "./Modal";
+
 export function Settings() {
   return (
-    <div>
-      {" "}
-      <h1> settings modal</h1>
-    </div>
+    <Modal zValue="40">
+      <div className="relative flex flex-col flex-wrap items-center justify-center">
+        {" "}
+        <h1 className="text-5xl drop-shadow-px-btn">SETTINGS</h1>
+      </div>
+    </Modal>
   );
 }

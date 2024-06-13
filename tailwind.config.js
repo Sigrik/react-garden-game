@@ -82,10 +82,24 @@ export default {
             marginLeft: "100vw",
           },
         },
+        popUp: {
+          "0%": {
+            opacity: 0,
+            transform: "scale(0.6)",
+          },
+          "40%": {
+            opacity: 1,
+            transform: "scale(1.1)",
+          },
+          "80%": {
+            transform: "scale(0.95)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
-        tileTransitionGrass: "tileTransitionGrass 0.4s ease-in-out forwards",
-        tileTransitionMud: "tileTransitionMud 0.4s ease-in-out forwards",
         cloudTransitionFast: "cloudTransition 40s linear infinite",
         cloudTransitionMedium: "cloudTransition 60s linear infinite",
         cloudTransitionSlow: "cloudTransition 80s linear infinite",
@@ -94,6 +108,9 @@ export default {
         cloudLateTransitionMedium: "cloudTransitionLate 60s linear infinite",
         cloudLateTransitionSlow: "cloudTransitionLate 80s linear infinite",
         cloudLateTransitionVerySlow: "cloudTransitionLate 100s linear infinite",
+        tileTransitionGrass: "tileTransitionGrass 0.4s ease-in-out forwards",
+        tileTransitionMud: "tileTransitionMud 0.4s ease-in-out forwards",
+        popUp: "popUp 0.3s ease-in-out",
       },
     },
   },

@@ -22,7 +22,7 @@ export function GameScreen() {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
     background: `url('/src/assets/player${playerPos.direction}.png') no-repeat center / contain`,
   };
-  console.log(level);
+
   const detectKeyDown = (e) => {
     switch (e.key) {
       case "w":
@@ -62,7 +62,6 @@ export function GameScreen() {
       return total + row.reduce((rowTotal, col) => rowTotal + col, 0);
     }, 0);
     if (gridCount === 16 || gridCount === 0) {
-      console.log("You won!");
       clearInterval(gameTimerRef.current);
       document.removeEventListener(
         "keydown",
@@ -90,9 +89,7 @@ export function GameScreen() {
       } else if (newCol >= 3) {
         newCol = 3;
       }
-      if (newRow === prevPosition.row && newCol === prevPosition.col) {
-        console.log("row and col is the same, not moving");
-      } else {
+      if (!(newRow === prevPosition.row && newCol === prevPosition.col)) {
         swapSquare(newRow, newCol);
       }
       return { row: newRow, col: newCol, direction: facingDirection };
@@ -102,12 +99,6 @@ export function GameScreen() {
   function swapSquare(row, col) {
     gameGrid[row][col] = gameGrid[row][col] === 1 ? 0 : 1;
   }
-
-  /*
-  useEffect(() => {
-    console.log(playerPos);
-  }, [playerPos]);
-*/
 
   useEffect(() => {
     gameTimerRef.current = setInterval(() => {
@@ -120,7 +111,6 @@ export function GameScreen() {
             throttledKeyDownRef.current,
             true,
           );
-          console.log("Game Over time's up!");
         }
         return prevTime - 1;
       });
@@ -144,8 +134,12 @@ export function GameScreen() {
 
   return (
     <div className="relative flex flex-col flex-wrap items-center justify-center">
-      {checkWin(gameGrid) ? <GameOver title="You Won!"></GameOver> : null}
-      {checkGameOver ? <GameOver title="You Lost"></GameOver> : null}
+      {checkWin(gameGrid) ? (
+        <GameOver title="LEVEL CLEARED!" time={gameTime}></GameOver>
+      ) : null}
+      {checkGameOver ? (
+        <GameOver title="LEVEL FAILED!" time={gameTime}></GameOver>
+      ) : null}
       <div className="absolute -top-20 flex flex-col items-center justify-center">
         <div>{gameTime}</div>
         <progress
