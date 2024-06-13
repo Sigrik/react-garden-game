@@ -1,17 +1,14 @@
 import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import { LEVELS } from "../levels";
 import { Player } from "../components/Player";
 import { GameOver } from "../components/GameOver";
 
-const gameGrid = [
-  [1, 0, 0, 0],
-  [1, 0, 1, 1],
-  [1, 0, 1, 1],
-  [1, 0, 1, 1],
-];
-
-const levelGameTime = 20;
-
 export function GameScreen() {
+  const location = useLocation();
+  const { level } = location.state || {};
+  const gameGrid = LEVELS[level].grid;
+  const levelGameTime = LEVELS[level].time;
   const [playerPos, setPlayerPos] = useState({
     row: 3,
     col: 0,
@@ -25,7 +22,7 @@ export function GameScreen() {
     transform: `translate(${playerPos.col * 6}rem,${playerPos.row * 6}rem)`,
     background: `url('/src/assets/player${playerPos.direction}.png') no-repeat center / contain`,
   };
-
+  console.log(level);
   const detectKeyDown = (e) => {
     switch (e.key) {
       case "w":
