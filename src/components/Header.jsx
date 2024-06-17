@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { Settings } from "./Settings";
 import { useNavigate, useLocation } from "react-router-dom";
-
+const clickSound = new Audio("/src/assets/click.wav");
 export function Header() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [showSettings, setShowSettings] = useState(false);
-
   function handleShowSettings() {
     setShowSettings(!showSettings);
+    clickSound.play();
   }
 
   function navigateBack() {
     navigate("/");
+    clickSound.play();
   }
   if (pathname === "/") {
     return (

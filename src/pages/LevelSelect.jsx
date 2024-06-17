@@ -1,6 +1,9 @@
 import { LEVELS } from "../levels";
 import { Link } from "react-router-dom";
-
+const clickSound = new Audio("/src/assets/click.wav");
+function playClick() {
+  clickSound.play();
+}
 export function LevelSelect() {
   return (
     <div className="z-20 flex flex-col items-center">
@@ -11,7 +14,8 @@ export function LevelSelect() {
         {LEVELS.map((row, index) => (
           <Link
             to={`/game`}
-            state={{ level: index + 1 }}
+            onClick={playClick}
+            state={{ level: index }}
             className="flex h-32 w-32 items-center justify-center rounded-md bg-indigo-400 text-3xl text-white drop-shadow-px-btn hover:bg-indigo-300"
             key={index}
           >
