@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import { LEVELS } from "../levels";
 import { Player } from "../components/Player";
 import { GameOver } from "../components/GameOver";
+const moveSound = new Audio("/src/assets/moveTile.wav");
+const winSound = new Audio("/src/assets/win.wav");
+const loseSound = new Audio("/src/assets/lose.wav");
 
 export function GameScreen() {
   const location = useLocation();
@@ -28,18 +31,22 @@ export function GameScreen() {
       case "w":
       case "ArrowUp":
         movePlayer(-1, 0, "Up");
+        moveSound.play();
         break;
       case "s":
       case "ArrowDown":
         movePlayer(+1, 0, "Down");
+        moveSound.play();
         break;
       case "a":
       case "ArrowLeft":
         movePlayer(0, -1, "Left");
+        moveSound.play();
         break;
       case "d":
       case "ArrowRight":
         movePlayer(0, +1, "Right");
+        moveSound.play();
     }
   };
 
@@ -63,6 +70,7 @@ export function GameScreen() {
     }, 0);
     if (gridCount === 16 || gridCount === 0) {
       clearInterval(gameTimerRef.current);
+      winSound.play();
       document.removeEventListener(
         "keydown",
         throttledKeyDownRef.current,
@@ -106,6 +114,7 @@ export function GameScreen() {
         if (prevTime === 1) {
           clearInterval(gameTimerRef.current);
           setCheckGameOver(true);
+          lose.play();
           document.removeEventListener(
             "keydown",
             throttledKeyDownRef.current,
