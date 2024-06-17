@@ -1,11 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Tutorial } from "../components/Tutorial";
+
 const clickSound = new Audio("/src/assets/click.wav");
 function playClick() {
   clickSound.play();
 }
 export function MainMenu() {
+  const [showTutorial, setShowTutorial] = useState(false);
+  function handleShowTutorial() {
+    setShowTutorial(!showTutorial);
+    playClick();
+  }
   return (
     <div className="z-20 flex flex-col items-center gap-y-4">
+      {showTutorial && <Tutorial onClose={handleShowTutorial} />}
       <div className="h-32 w-96 bg-game-logo bg-contain bg-center bg-no-repeat"></div>
       <div className="flex flex-col items-center gap-y-4 text-white">
         <Link
@@ -21,12 +30,12 @@ export function MainMenu() {
         >
           SURVIVAL MODE
         </Link>
-        <Link
-          onClick={playClick}
+        <button
+          onClick={handleShowTutorial}
           className="w-full rounded-md bg-amber-400 p-3 text-center text-3xl drop-shadow-px-btn hover:bg-amber-300"
         >
           HOW TO PLAY
-        </Link>
+        </button>
       </div>
     </div>
   );

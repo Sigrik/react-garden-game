@@ -20,9 +20,9 @@ export function Header() {
       <div>
         <button
           onClick={handleShowSettings}
-          className="absolute right-4 top-4 z-30 h-16 w-16 bg-cog-icon bg-contain bg-center bg-no-repeat text-white"
+          className="absolute right-4 top-4 z-40 h-16 w-16 bg-cog-icon bg-contain bg-center bg-no-repeat text-white"
         ></button>
-        {showSettings && <Settings />}
+        {showSettings && <Settings onClose={handleShowSettings} />}
       </div>
     );
   }
@@ -30,7 +30,7 @@ export function Header() {
     <div>
       <button
         onClick={handleShowSettings}
-        className="absolute right-4 top-4 z-30 h-16 w-16 bg-cog-icon bg-contain bg-center bg-no-repeat text-white"
+        className="absolute right-4 top-4 z-40 h-16 w-16 bg-cog-icon bg-contain bg-center bg-no-repeat text-white"
       ></button>
       <button
         onClick={navigateBack}

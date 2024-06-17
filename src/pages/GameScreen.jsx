@@ -50,8 +50,6 @@ export function GameScreen() {
     }
   };
 
-  const throttledKeyDown = throttle(detectKeyDown, 700);
-
   function throttle(mainFunction, delay) {
     let timerFlag = null;
     return (...args) => {
@@ -114,7 +112,7 @@ export function GameScreen() {
         if (prevTime === 1) {
           clearInterval(gameTimerRef.current);
           setCheckGameOver(true);
-          lose.play();
+          loseSound.play();
           document.removeEventListener(
             "keydown",
             throttledKeyDownRef.current,
