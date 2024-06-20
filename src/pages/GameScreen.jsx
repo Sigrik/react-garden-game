@@ -10,6 +10,14 @@ const loseSound = new Audio("/src/assets/lose.wav");
 export function GameScreen() {
   const location = useLocation();
   const { level } = location.state || {};
+  function completeLevel() {
+    const completedLevels =
+      JSON.parse(localStorage.getItem("completedLevels")) || [];
+    if (!completedLevels.includes(level)) {
+      completedLevels.push(level);
+      localStorage.setItem("completedLevels", JSON.stringify(completedLevels));
+    }
+  }
   const gameGrid = LEVELS[level].grid;
   const levelGameTime = LEVELS[level].time;
   const [playerPos, setPlayerPos] = useState({
@@ -68,6 +76,7 @@ export function GameScreen() {
     }, 0);
     if (gridCount === 16 || gridCount === 0) {
       clearInterval(gameTimerRef.current);
+      completeLevel();
       winSound.play();
       document.removeEventListener(
         "keydown",

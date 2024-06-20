@@ -4,7 +4,11 @@ const clickSound = new Audio("/src/assets/click.wav");
 function playClick() {
   clickSound.play();
 }
+
 export function LevelSelect() {
+  const completedLevels =
+    JSON.parse(localStorage.getItem("completedLevels")) || [];
+  console.log(completedLevels);
   return (
     <div className="z-20 flex flex-col items-center">
       <h1 className="mb-24 text-5xl text-white drop-shadow-px-btn">
@@ -13,10 +17,10 @@ export function LevelSelect() {
       <ol className="relative grid grid-cols-5 gap-6">
         {LEVELS.map((row, index) => (
           <Link
-            to={`/game`}
+            to={`${completedLevels.includes(index - 1) ? "/game" : ""}`}
             onClick={playClick}
             state={{ level: index }}
-            className="flex h-32 w-32 items-center justify-center rounded-md bg-indigo-400 text-3xl text-white drop-shadow-px-btn hover:bg-indigo-300"
+            className={`flex h-32 w-32 items-center ${completedLevels.includes(index - 1) ? "bg-indigo-400 hover:bg-indigo-300 " : "cursor-default bg-gray-400 hover:bg-gray-400"} ${completedLevels.includes(index) ? "bg-green-400 hover:bg-green-300" : ""} justify-center rounded-md text-3xl text-white drop-shadow-px-btn`}
             key={index}
           >
             {index + 1}
