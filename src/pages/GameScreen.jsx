@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { LEVELS } from "../levels";
 import { Player } from "../components/Player";
@@ -34,29 +34,62 @@ export function GameScreen() {
     background: `url('/src/assets/player${playerPos.direction}.png') no-repeat center / contain`,
   };
 
-  const detectKeyDown = (e) => {
-    switch (e.key) {
-      case "w":
-      case "ArrowUp":
-        movePlayer(-1, 0, "Up");
-        moveSound.play();
-        break;
-      case "s":
-      case "ArrowDown":
-        movePlayer(+1, 0, "Down");
-        moveSound.play();
-        break;
-      case "a":
-      case "ArrowLeft":
-        movePlayer(0, -1, "Left");
-        moveSound.play();
-        break;
-      case "d":
-      case "ArrowRight":
-        movePlayer(0, +1, "Right");
-        moveSound.play();
-    }
-  };
+  const swapSquare = useCallback(
+    (row, col) => {
+      gameGrid[row][col] = gameGrid[row][col] === 1 ? 0 : 1;
+    },
+    [gameGrid],
+  );
+
+  const movePlayer = useCallback(
+    (rowChange, colChange, direction) => {
+      setPlayerPos((prevPosition) => {
+        let newRow = prevPosition.row + rowChange;
+        let newCol = prevPosition.col + colChange;
+        let facingDirection = direction;
+        if (newRow <= 0) {
+          newRow = 0;
+        } else if (newRow >= 3) {
+          newRow = 3;
+        }
+
+        if (newCol <= 0) {
+          newCol = 0;
+        } else if (newCol >= 3) {
+          newCol = 3;
+        }
+        if (!(newRow === prevPosition.row && newCol === prevPosition.col)) {
+          swapSquare(newRow, newCol);
+          moveSound.play();
+        }
+        return { row: newRow, col: newCol, direction: facingDirection };
+      });
+    },
+    [swapSquare],
+  );
+
+  const detectKeyDown = useCallback(
+    (e) => {
+      switch (e.key) {
+        case "w":
+        case "ArrowUp":
+          movePlayer(-1, 0, "Up");
+          break;
+        case "s":
+        case "ArrowDown":
+          movePlayer(+1, 0, "Down");
+          break;
+        case "a":
+        case "ArrowLeft":
+          movePlayer(0, -1, "Left");
+          break;
+        case "d":
+        case "ArrowRight":
+          movePlayer(0, +1, "Right");
+      }
+    },
+    [movePlayer],
+  );
 
   function throttle(mainFunction, delay) {
     let timerFlag = null;
@@ -86,33 +119,6 @@ export function GameScreen() {
       return true;
     }
     return false;
-  }
-
-  function movePlayer(rowChange, colChange, direction) {
-    setPlayerPos((prevPosition) => {
-      let newRow = prevPosition.row + rowChange;
-      let newCol = prevPosition.col + colChange;
-      let facingDirection = direction;
-      if (newRow <= 0) {
-        newRow = 0;
-      } else if (newRow >= 3) {
-        newRow = 3;
-      }
-
-      if (newCol <= 0) {
-        newCol = 0;
-      } else if (newCol >= 3) {
-        newCol = 3;
-      }
-      if (!(newRow === prevPosition.row && newCol === prevPosition.col)) {
-        swapSquare(newRow, newCol);
-      }
-      return { row: newRow, col: newCol, direction: facingDirection };
-    });
-  }
-
-  function swapSquare(row, col) {
-    gameGrid[row][col] = gameGrid[row][col] === 1 ? 0 : 1;
   }
 
   useEffect(() => {
@@ -146,7 +152,7 @@ export function GameScreen() {
         true,
       );
     };
-  }, []);
+  }, [detectKeyDown]);
 
   return (
     <div className="relative flex flex-col flex-wrap items-center justify-center">

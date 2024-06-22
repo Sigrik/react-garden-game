@@ -1,4 +1,5 @@
 import { Modal } from "./Modal";
+import PropTypes from "prop-types";
 
 export function Tutorial({ onClose }) {
   return (
@@ -27,3 +28,7 @@ export function Tutorial({ onClose }) {
     </Modal>
   );
 }
+
+Tutorial.propTypes = {
+  onClose: PropTypes.string.isRequired,
+};

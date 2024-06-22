@@ -1,4 +1,5 @@
 import { Modal } from "./Modal";
+import PropTypes from "prop-types";
 
 function resetLevels() {
   const completedLevels = [-1];
@@ -29,3 +30,7 @@ export function Settings({ onClose }) {
     </Modal>
   );
 }
+
+Settings.propTypes = {
+  onClose: PropTypes.string.isRequired,
+};

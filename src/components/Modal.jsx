@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 export function Modal({ zValue, children }) {
   return (
     <div
@@ -7,3 +8,8 @@ export function Modal({ zValue, children }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  zValue: PropTypes.number.isRequired,
+};

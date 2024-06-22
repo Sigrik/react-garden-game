@@ -1,5 +1,6 @@
 import { Modal } from "./Modal";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 const clickSound = new Audio("/src/assets/click.wav");
 function playClick() {
   clickSound.play();
@@ -33,3 +34,8 @@ export function GameOver(props) {
     </Modal>
   );
 }
+
+GameOver.propTypes = {
+  title: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+};
