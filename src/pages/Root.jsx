@@ -39,6 +39,14 @@ export function RootLayout() {
         <div className="absolute top-80 z-10 h-20 w-40 animate-cloudLateTransitionSlow bg-cloud-3 bg-contain bg-center bg-no-repeat opacity-50"></div>
         <div className="absolute bottom-20 z-10 h-32 w-64 animate-cloudLateTransitionFast bg-cloud-2 bg-contain bg-center bg-no-repeat"></div>
         <div className="absolute bottom-14 z-10 h-16 w-32 animate-cloudTransitionVerySlow bg-cloud-1 bg-contain bg-center bg-no-repeat opacity-30"></div>
+        <div className="bg-github-logo absolute bottom-2 left-4 text-2xl">
+          <a
+            className="text-white hover:text-amber-400"
+            href="https://github.com/Sigrik/react-garden-game"
+          >
+            GitHub
+          </a>
+        </div>
       </main>
     </>
   );

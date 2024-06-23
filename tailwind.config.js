@@ -9,12 +9,16 @@ export default {
       backgroundImage: {
         "grass-texture": "url('/src/assets/grass-texture.png')",
         "mud-texture": "url('/src/assets/mud-texture.png')",
+        "tile-edge": "url('/src/assets/tileEdge.png')",
         "game-logo": "url('/src/assets/logo.png')",
         "cog-icon": "url('/src/assets/cog-icon.png')",
         "arrow-icon": "url('/src/assets/arrow-icon.png')",
         "cloud-1": "url('/src/assets/cloud1.png')",
         "cloud-2": "url('/src/assets/cloud2.png')",
         "cloud-3": "url('/src/assets/cloud3.png')",
+        "tutorial-Controls": "url('/src/assets/controls.gif')",
+        "tutorial-Grid": "url('/src/assets/tutorialGrid.gif')",
+        "hour-glass": "url('/src/assets/hourglass.png')",
       },
       dropShadow: {
         "px-btn": "0px 6px 0px rgba(43,43,43, 1)",

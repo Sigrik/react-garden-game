@@ -12,3 +12,15 @@
     image-rendering: pixelated;
   }
 }
+
+progress::-webkit-progress-bar {
+  @apply bg-gray-200;
+}
+
+progress::-webkit-progress-value {
+  @apply bg-green-500;
+}
+
+progress::-moz-progress-bar {
+  @apply bg-amber-400;
+}

@@ -15,7 +15,7 @@ export function MainMenu() {
   return (
     <div className="z-20 flex flex-col items-center gap-y-4">
       {showTutorial && <Tutorial onClose={handleShowTutorial} />}
-      <div className="h-32 w-96 bg-game-logo bg-contain bg-center bg-no-repeat"></div>
+      <div className="h-32 w-[34rem] bg-game-logo bg-contain bg-center bg-no-repeat"></div>
       <div className="flex flex-col items-center gap-y-4 text-white">
         <Link
           to="/levels"

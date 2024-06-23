@@ -155,20 +155,22 @@ export function GameScreen() {
   }, [detectKeyDown]);
 
   return (
-    <div className="relative flex flex-col flex-wrap items-center justify-center">
+    <div className="relative mt-6 flex flex-col flex-wrap items-center justify-center">
       {checkWin(gameGrid) ? (
         <GameOver title="LEVEL CLEARED!" time={gameTime}></GameOver>
       ) : null}
       {checkGameOver ? (
         <GameOver title="LEVEL FAILED!" time={gameTime}></GameOver>
       ) : null}
-      <div className="absolute -top-20 flex flex-col items-center justify-center">
-        <div>{gameTime}</div>
-        <progress
-          className="transition-all"
-          value={gameTime}
-          max={levelGameTime}
-        />
+      <div className="absolute -top-16 flex flex-col items-center justify-center">
+        <div className="relative">
+          <div className="bg-hour-glass absolute -left-7 -top-3 h-12 w-12 bg-contain bg-center bg-no-repeat"></div>
+          <progress
+            className=" h-6 w-48"
+            value={gameTime}
+            max={levelGameTime}
+          />
+        </div>
       </div>
       <ol className="relative z-20 flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
@@ -188,6 +190,7 @@ export function GameScreen() {
             </ol>
           </li>
         ))}
+        <div className=" bg-tile-edge  h-8 w-full bg-contain bg-no-repeat"></div>
       </ol>
     </div>
   );
