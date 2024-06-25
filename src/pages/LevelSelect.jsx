@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { LEVELS } from "../levels";
 import { Link } from "react-router-dom";
 const clickSound = new Audio("/src/assets/click.wav");
@@ -6,9 +7,25 @@ function playClick() {
 }
 
 export function LevelSelect() {
-  const completedLevels =
-    JSON.parse(localStorage.getItem("completedLevels")) || [];
-  console.log(completedLevels);
+  const [completedLevels, setCompletedLevels] = useState(
+    JSON.parse(localStorage.getItem("completedLevels")) || [],
+  );
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setCompletedLevels(
+        JSON.parse(localStorage.getItem("completedLevels")) || [],
+      );
+      console.log("detected reset");
+    };
+
+    window.addEventListener("completedLevelsReset", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("completedLevelsReset", handleStorageChange);
+    };
+  }, []);
+
   return (
     <div className="z-20 flex flex-col items-center">
       <h1 className="mb-24 text-5xl text-white drop-shadow-px-btn">
@@ -20,7 +37,7 @@ export function LevelSelect() {
             to={`${completedLevels.includes(index - 1) ? "/game" : ""}`}
             onClick={playClick}
             state={{ level: index }}
-            className={`flex h-32 w-32 items-center ${completedLevels.includes(index - 1) ? "bg-indigo-400 hover:bg-indigo-300 " : "cursor-default bg-gray-400 hover:bg-gray-400"} ${completedLevels.includes(index) ? "bg-green-400 hover:bg-green-300" : ""} justify-center rounded-md text-3xl text-white drop-shadow-px-btn`}
+            className={`flex h-32 w-32 items-center ${completedLevels.includes(index) ? "bg-green-400 hover:bg-green-300" : completedLevels.includes(index - 1) ? "bg-indigo-400 hover:bg-indigo-300" : "cursor-default bg-gray-400 hover:bg-gray-400"} justify-center rounded-md text-3xl text-white drop-shadow-px-btn`}
             key={index}
           >
             {index + 1}

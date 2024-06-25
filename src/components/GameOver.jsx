@@ -7,7 +7,7 @@ function playClick() {
 }
 export function GameOver(props) {
   return (
-    <Modal zValue="30">
+    <Modal zValue={30}>
       <h1 className="text-5xl drop-shadow-px-btn">{props.title}</h1>
       <p className="text-2xl">Time left: {props.time} seconds</p>
       <div className="flex flex-row gap-4">
