@@ -157,10 +157,20 @@ export function GameScreen() {
   return (
     <div className="relative mt-6 flex flex-col flex-wrap items-center justify-center">
       {checkWin(gameGrid) ? (
-        <GameOver title="LEVEL CLEARED!" time={gameTime}></GameOver>
+        <GameOver
+          title="LEVEL CLEARED!"
+          time={gameTime}
+          level={level}
+          completed={true}
+        ></GameOver>
       ) : null}
       {checkGameOver ? (
-        <GameOver title="LEVEL FAILED!" time={gameTime}></GameOver>
+        <GameOver
+          title="LEVEL FAILED!"
+          time={gameTime}
+          level={level}
+          completed={false}
+        ></GameOver>
       ) : null}
       <div className="absolute -top-16 flex flex-col items-center justify-center">
         <div className="relative">
@@ -172,7 +182,7 @@ export function GameScreen() {
           />
         </div>
       </div>
-      <ol className="relative z-20 flex flex-col flex-wrap justify-center">
+      <ol className="animate-tilesPopUp relative z-20 flex flex-col flex-wrap justify-center">
         <Player style={playerStyle} />
         {gameGrid.map((row, rowIndex) => (
           <li key={rowIndex}>

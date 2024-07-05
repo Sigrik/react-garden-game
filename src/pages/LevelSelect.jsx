@@ -16,7 +16,6 @@ export function LevelSelect() {
       setCompletedLevels(
         JSON.parse(localStorage.getItem("completedLevels")) || [],
       );
-      console.log("detected reset");
     };
 
     window.addEventListener("completedLevelsReset", handleStorageChange);

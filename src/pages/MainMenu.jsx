@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tutorial } from "../components/Tutorial";
-
 const clickSound = new Audio("/src/assets/click.wav");
 function playClick() {
   clickSound.play();
@@ -13,7 +12,7 @@ export function MainMenu() {
     playClick();
   }
   return (
-    <div className="z-20 flex flex-col items-center gap-y-4">
+    <div className="z-40 flex flex-col items-center gap-y-4">
       {showTutorial && <Tutorial onClose={handleShowTutorial} />}
       <div className="h-32 w-[34rem] bg-game-logo bg-contain bg-center bg-no-repeat"></div>
       <div className="flex flex-col items-center gap-y-4 text-white">

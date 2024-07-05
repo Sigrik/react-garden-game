@@ -13,6 +13,7 @@ export default {
         "game-logo": "url('/src/assets/logo.png')",
         "cog-icon": "url('/src/assets/cog-icon.png')",
         "arrow-icon": "url('/src/assets/arrow-icon.png')",
+        "x-icon": "url('/src/assets/x-icon.png')",
         "cloud-1": "url('/src/assets/cloud1.png')",
         "cloud-2": "url('/src/assets/cloud2.png')",
         "cloud-3": "url('/src/assets/cloud3.png')",
@@ -102,6 +103,19 @@ export default {
             transform: "scale(1)",
           },
         },
+        tilesPopUp: {
+          "0%": {
+            opacity: 0,
+            transform: "scale(0.7)",
+          },
+          "50%": {
+            opacity: 0,
+          },
+          "100%": {
+            opacity: 1,
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         cloudTransitionFast: "cloudTransition 40s linear infinite",
@@ -115,6 +129,7 @@ export default {
         tileTransitionGrass: "tileTransitionGrass 0.4s ease-in-out forwards",
         tileTransitionMud: "tileTransitionMud 0.4s ease-in-out forwards",
         popUp: "popUp 0.3s ease-in-out",
+        tilesPopUp: "tilesPopUp 0.8s ease-in-out",
       },
     },
   },

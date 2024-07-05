@@ -26,6 +26,8 @@ export function GameOver(props) {
         </Link>
         <Link
           onClick={playClick}
+          to={`${props.completed ? "/game" : ""}`}
+          state={{ level: props.level }}
           className="rounded-md bg-indigo-400 px-10 py-4 text-center text-2xl drop-shadow-px-btn hover:bg-indigo-300"
         >
           Next
@@ -38,4 +40,6 @@ export function GameOver(props) {
 GameOver.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
+  completed: PropTypes.bool.isRequired,
+  level: PropTypes.number.isRequired,
 };
