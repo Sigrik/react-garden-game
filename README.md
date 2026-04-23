@@ -1,3 +1,5 @@
-# React Garden Game
+# React Garden Game (WIP)
 
-Simple tile-based game
+Simple unfinished React tile-based game inspired by the sun-moon puzzle from Fable: The Lost Chapters
+
+
